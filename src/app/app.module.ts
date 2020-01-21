@@ -14,10 +14,11 @@ import { SearchComponent } from './search/search.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, HompageComponent, AboutComponent, HeaderComponent, FooterComponent, TilesComponent, SearchComponent, SidebarComponent, LoginComponent, UserinfoComponent ],
+  declarations: [ AppComponent, HelloComponent, HompageComponent, AboutComponent, HeaderComponent, FooterComponent, TilesComponent, SearchComponent, SidebarComponent, LoginComponent, UserinfoComponent, LandingComponent ],
   bootstrap:    [ AppComponent ],
   providers: [SharedInfoService]
 })
