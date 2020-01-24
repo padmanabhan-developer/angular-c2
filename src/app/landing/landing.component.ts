@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Ngb}
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
