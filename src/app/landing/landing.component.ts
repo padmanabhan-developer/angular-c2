@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCarousel, NgbCarouselConfig, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap'
 @Component({
   selector: 'landing',
   templateUrl: './landing.component.html',
