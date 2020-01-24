@@ -15,9 +15,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { LandingComponent } from './landing/landing.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
+  imports:      [ BrowserModule, FormsModule, NgbModule ],
   declarations: [ AppComponent, HelloComponent, HompageComponent, AboutComponent, HeaderComponent, FooterComponent, TilesComponent, SearchComponent, SidebarComponent, LoginComponent, UserinfoComponent, LandingComponent ],
   bootstrap:    [ AppComponent ],
   providers: [SharedInfoService]

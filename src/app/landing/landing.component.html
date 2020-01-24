@@ -1,0 +1,19 @@
+<ngb-carousel
+[showNavigationArrows]="false" 
+[showNavigationIndicators]="false"
+interval="1000"
+[keyboard]="true"
+[pauseOnHover]="false"
+[wrap]="true"
+[activeId]="'secondSlide'"
+>
+  <ng-template ngbSlide *ngFor image of images>
+    <div class="picsum-img-wrapper">
+      <img src={{image}} alt="Angular Carousel 1">
+    </div>
+    <div class="carousel-caption">
+      <h3>Title Goes Here</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
