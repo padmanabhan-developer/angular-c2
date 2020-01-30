@@ -302,7 +302,7 @@ body {
   cursor: pointer;
   height: 100%;
   width: 36px;
-  background: url(images/side-search.svg) no-repeat center center;
+  background: url(assets/images/side-search.svg) no-repeat center center;
 }
 
 .ul-style1 {
@@ -314,7 +314,7 @@ body {
 
 .ul-style1 li {
   float: left;
-  background: url(images/side-devider.svg) no-repeat right center;
+  background: url(assets/images/side-devider.svg) no-repeat right center;
   padding: 0 10px 0 0;
   margin: 0 5px 0 0;
   list-style: none;
@@ -424,7 +424,7 @@ body {
   float: left;
   width: 15px;
   height: 30px;
-  background: url(images/side-devider2.svg) no-repeat center center;
+  background: url(assets/images/side-devider2.svg) no-repeat center center;
 }
 
 .rightbar {
@@ -472,7 +472,7 @@ body {
   top: 12px;
   width: 34px;
   height: 34px;
-  background: url(images/plus.svg) no-repeat center center #fff;
+  background: url(assets/images/plus.svg) no-repeat center center #fff;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;
@@ -544,12 +544,12 @@ body {
 }
 
 .controll-top {
-  background: url(images/top.svg) no-repeat center center;
+  background: url(assets/images/top.svg) no-repeat center center;
   margin-bottom: 148px;
 }
 
 .controll-down {
-  background: url(images/down.svg) no-repeat center center;
+  background: url(assets/images/down.svg) no-repeat center center;
 }
 
 .popup1 {
@@ -592,7 +592,7 @@ body {
   float: left;
   width: 35px;
   height: 35px;
-  background: url(images/download.svg) no-repeat center center #fff;
+  background: url(assets/images/download.svg) no-repeat center center #fff;
   margin-right: 10px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -616,7 +616,7 @@ body {
   float: left;
   width: 35px;
   height: 35px;
-  background: url(images/add.svg) no-repeat center center #fff;
+  background: url(assets/images/add.svg) no-repeat center center #fff;
   margin-right: 10px;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -627,7 +627,7 @@ body {
   float: right;
   width: 25px;
   height: 25px;
-  background: url(images/close.svg) no-repeat center center;
+  background: url(assets/images/close.svg) no-repeat center center;
 }
 
 .popup-content {
@@ -737,12 +737,12 @@ body {
 
 .prev1 {
   float: left;
-  background: url(images/prev.svg) no-repeat center center;
+  background: url(assets/images/prev.svg) no-repeat center center;
 }
 
 .next1 {
   float: right;
-  background: url(images/next.svg) no-repeat center center;
+  background: url(assets/images/next.svg) no-repeat center center;
 }
 
 .popup-right-block3 {
@@ -1009,7 +1009,7 @@ body {
   position: absolute;
   right: 10px;
   top: 0;
-  background: url(images/cancel.svg) no-repeat center center;
+  background: url(assets/images/cancel.svg) no-repeat center center;
   width: 13px;
   height: 100%;
 }
@@ -1146,7 +1146,7 @@ body {
 .textarea2 {
   float: left;
   width: 100%;
-  background: url(images/edit.svg) no-repeat 12px 20px #f3f3f3;
+  background: url(assets/images/edit.svg) no-repeat 12px 20px #f3f3f3;
   height: 120px;
   border: none;
   color: #A9A9A9;
@@ -1222,7 +1222,7 @@ body {
   top: 20px;
   width: 20px;
   height: 20px;
-  background: url(images/close2.svg) no-repeat center center;
+  background: url(assets/images/close2.svg) no-repeat center center;
 }
 
 .rotate-icon {
@@ -1231,7 +1231,7 @@ body {
   top: 0;
   width: 20px;
   height: 33px;
-  background: url(images/rotate-icon.svg) no-repeat center center;
+  background: url(assets/images/rotate-icon.svg) no-repeat center center;
 }
 
 .Anullere-btn:hover .rotate-icon {
@@ -1300,7 +1300,7 @@ body {
 .custom-select {
   float: left;
   width: 100%;
-  background: url(images/select.png) no-repeat right center #fff;
+  background: url(assets/images/select.png) no-repeat right center #fff;
   height: 30px;
   border: none;
   color: #A9A9A9;
@@ -1354,7 +1354,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   line-height: 20px;
-  background: url(images/next2.svg) no-repeat right center;
+  background: url(assets/images/next2.svg) no-repeat right center;
   padding-right: 22px;
   text-decoration: none !important;
   margin-left: 20px;
@@ -1367,7 +1367,7 @@ body {
   font-weight: 400;
   text-transform: uppercase;
   line-height: 20px;
-  background: url(images/prev2.png) no-repeat 0 center;
+  background: url(assets/images/prev2.png) no-repeat 0 center;
   padding-left: 22px;
   text-decoration: none !important;
   opacity: 0.3;
@@ -1568,7 +1568,7 @@ body {
   height: 150px;
   font-size: 14px;
   color: #000000;
-  background: url(images/edit2.png) no-repeat 18px 20px #f3f3f3;
+  background: url(assets/images/edit2.png) no-repeat 18px 20px #f3f3f3;
   padding-left: 52px;
   margin-bottom: 5px;
 }
@@ -1632,7 +1632,7 @@ body {
   position: absolute;
   top: 0;
   right: 10px;
-  background: url(images/plus_icon.png) no-repeat center center;
+  background: url(assets/images/plus_icon.png) no-repeat center center;
   height: 100%;
   width: 10px;
 }
@@ -1716,7 +1716,7 @@ body {
   height: 424px;
   font-size: 14px;
   color: #000000;
-  background: url(images/edit2.png) no-repeat 18px 20px #f3f3f3;
+  background: url(assets/images/edit2.png) no-repeat 18px 20px #f3f3f3;
   padding-left: 52px;
   margin-bottom: 5px;
 }
@@ -1801,7 +1801,7 @@ body {
   position: absolute;
   left: 0;
   top: 30px;
-  background: url(images/side-plus.svg) no-repeat center center;
+  background: url(assets/images/side-plus.svg) no-repeat center center;
 }
 
 .side-user {
@@ -1810,7 +1810,7 @@ body {
   position: absolute;
   left: 0;
   top: 50%;
-  background: url(images/side-user.svg) no-repeat center center;
+  background: url(assets/images/side-user.svg) no-repeat center center;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -1822,7 +1822,7 @@ body {
   position: absolute;
   left: 0;
   top: 30px;
-  background: url(images/side-close.svg) no-repeat center center;
+  background: url(assets/images/side-close.svg) no-repeat center center;
 }
 
 .side-content {
@@ -1967,7 +1967,7 @@ body {
 }
 
 .casting-text .textarea2 {
-  background: url(images/edit.svg) no-repeat 0 0;
+  background: url(assets/images/edit.svg) no-repeat 0 0;
   height: 92px;
   padding: 0;
   padding-left: 32px;
@@ -2088,7 +2088,7 @@ body {
 
   .rightbar_inner ul li img {
     object-fit: cover;
-    width: auto;
+    width: 100%;
     max-width: inherit;
     max-width: inherit;
     min-width: 100%;
@@ -2831,7 +2831,7 @@ body {
 
   .rightbar_inner ul li img {
     object-fit: cover;
-    width: auto;
+    width: 100%;
     max-width: inherit;
     max-width: inherit;
     min-width: 100%;
@@ -3671,4 +3671,10 @@ body {
     width: 14px;
     margin-left: 6px;
   }
+}
+img.ng-lazyloaded { 
+  animation: fadein .5s;
+}@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; } 
 }

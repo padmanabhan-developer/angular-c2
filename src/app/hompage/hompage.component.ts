@@ -9,6 +9,7 @@ import { AppDataService } from '../services/app-data.service';
 export class HompageComponent implements OnInit {
   data = {}
   defaultImage = "/assets/images/loader/PolygonLoader.svg";
+  profileFallback = "/assets/images/profile/profileFallback.jpg";
   constructor(
     private appService: AppDataService
   ) { }
