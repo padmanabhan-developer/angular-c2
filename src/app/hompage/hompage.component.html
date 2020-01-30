@@ -1,7 +1,7 @@
 <div class="page-header">
   <div class="container-lg">
     <div class="row">
-      <div class="col-2"><a href="#"><img src="images/logo-black.svg" alt="" /></a></div>
+      <div class="col-2"><a href="#"><img src="assets/images/logo-black.svg" alt="" /></a></div>
       <div class="col-10">
         <nav class="navbar navbar-expand-md">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -24,7 +24,7 @@
         </nav>
 
         <div class="language"> <span class="active">DA</span> / <span>EN</span></div>
-        <div class="social"><a href="#" class="facebook"><img src="images/facebook.svg" alt="" /></a></div>
+        <div class="social"><a href="#" class="facebook"><img src="assets/images/facebook.svg" alt="" /></a></div>
       </div>
     </div>
   </div>
@@ -72,325 +72,20 @@
               <ul>
                 <li>
                   <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
+                    <img [src]="defaultImage" alt="" />
                     <a href="#" class="plus-icon"></a>
                     <div class="gallery-hover">
                       <p>Venkatesh CM8090<br><strong>35 år</strong></p>
                     </div>
                   </div>
                 </li>
-                <li>
+
+                <li *ngFor="let item of data.profiles | slice:0:500">
                   <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
+                    <img alt="" [lazyLoad]="item.profile_image" [defaultImage]="defaultImage" />
                     <a href="#" class="plus-icon"></a>
                     <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="galler-thumb">
-                    <img src="images/thumb.png" alt="" />
-                    <a href="#" class="plus-icon"></a>
-                    <div class="gallery-hover">
-                      <p>Venkatesh CM8090<br><strong>35 år</strong></p>
+                      <p>{{ item.first_name }} {{ item.profile_number }}<br><strong>{{ item.age }} år</strong></p>
                     </div>
                   </div>
                 </li>

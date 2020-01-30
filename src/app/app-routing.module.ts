@@ -5,7 +5,18 @@ import { HompageComponent } from './hompage/hompage.component';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'profiles'
+  },
+  {
+    path: '#',
+    pathMatch: 'full',
+    redirectTo: 'profiles'
+  },
+  {
     path: 'profiles',
+    pathMatch: 'full',
     component: HompageComponent
 
   }

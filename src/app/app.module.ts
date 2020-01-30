@@ -18,9 +18,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppDataService } from './services/app-data.service';
 import { AppRoutingModule } from './app-routing.module';
-
+import {LazyLoadImageModule} from 'ng-lazyload-image';
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, NgbModule, BrowserAnimationsModule, AppRoutingModule ],
+  imports:      [ BrowserModule, FormsModule, NgbModule, BrowserAnimationsModule, AppRoutingModule, LazyLoadImageModule ],
   declarations: [ AppComponent, HelloComponent, HompageComponent, AboutComponent, HeaderComponent, FooterComponent, TilesComponent, SearchComponent, SidebarComponent, LoginComponent, UserinfoComponent, LandingComponent ],
   bootstrap:    [ AppComponent ],
   providers: [AppDataService]
