@@ -9,14 +9,16 @@
               class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto py-4 py-md-0">
-              <li class="nav-item"> <a class="nav-link" href="#">Login</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="#">Ansøgning</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="#">Om Castit</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="#">Castit Workshop</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="#">Kontakt</a>
-                <p>+45 21 28 58 25 <br><a href="#">info@castit.dk</a></p>
+              <li *ngIf="!userprofileService.isLoggedIn()" class="nav-item"> <a routerLink="/login" class="nav-link" >Login</a> </li>
+              <li *ngIf="userprofileService.isLoggedIn()" class="nav-item"> <a routerLink="/logout" class="nav-link" >Log ud</a> </li>
+              <li *ngIf="!userprofileService.isLoggedIn()" class="nav-item"> <a routerLink="/login/1" class="nav-link" >Ansøgning</a> </li>
+              <li *ngIf="userprofileService.isLoggedIn()" class="nav-item"> <a routerLink="/login/1" class="nav-link" >Min profil</a> </li>
+              <li class="nav-item"> <a routerLink="/about" class="nav-link" >Om Castit</a> </li>
+              <li class="nav-item"> <a routerLink="/workshop" class="nav-link" >Castit Workshop</a> </li>
+              <li class="nav-item"> <a class="nav-link">Kontakt</a>
+                <p>+45 21 28 58 25 <br><a >info@castit.dk</a></p>
               </li>
-              <li class="nav-item"> <a class="nav-link" href="#">Adresse</a>
+              <li class="nav-item"> <a class="nav-link">Adresse</a>
                 <p>Rosenvængets Allé 11, 1. sal <br>2100 København Ø</p>
               </li>
             </ul>
@@ -39,15 +41,15 @@
           <div class="leftbox">
             <h2>Navn/Nr</h2>
             <span class="side-searchbox">
-              <input type="text" class="side-input ng-pristine ng-untouched ng-valid">
+              <input [(ngModel)]="searchFN" type="text" class="side-input ng-pristine ng-untouched ng-valid">
               <input type="button" class="side-search">
             </span>
           </div>
           <div class="leftbox">
             <h2>Køn</h2>
             <ul class="ul-style1">
-              <li><a class="gender_select"> Mand</a></li>
-              <li><a class="gender_select">Kvinde</a></li>
+              <li><a [ngClass]="{'gender_select': searchGender === 1}" (click)="setGender(1)" > Mand</a></li>
+              <li><a [ngClass]="{'gender_select': searchGender === 2}" (click)="setGender(2)" >Kvinde</a></li>
             </ul>
           </div>
           <div class="leftbox2">
@@ -61,7 +63,8 @@
             </div>
           </div>
           <div class="side-bottom">
-            <input type="submit" class="side-submit" value="SØG">
+            <input (click)="submitSearch()" type="submit" class="side-submit" value="SØG">
+            <input (click)="resetSearch()" type="submit" class="side-submit" value="Reset">
           </div>
         </div>
         <!--leftbar-->
@@ -70,7 +73,7 @@
           <div class="rightbar_inner scrollbar">
             <div class="overflow">
               <ul>
-                <li>
+                <!-- <li>
                   <div class="galler-thumb">
                     <img [src]="defaultImage" alt="" />
                     <a href="#" class="plus-icon"></a>
@@ -78,14 +81,14 @@
                       <p>Venkatesh CM8090<br><strong>35 år</strong></p>
                     </div>
                   </div>
-                </li>
+                </li> -->
 
-                <li *ngFor="let item of data.profiles | slice:0:500">
+                <li *ngFor="let item of data">
                   <div class="galler-thumb">
-                    <img alt="" [lazyLoad]="item.profile_image" [defaultImage]="defaultImage" [errorImage]="profileFallback" />
+                    <img (click)="loadProfile(item.uid_export)" alt="" [lazyLoad]="item.field_photos_export?item.field_photos_export[0]:profileFallback" [defaultImage]="defaultImage" [errorImage]="profileFallback" />
                     <a href="#" class="plus-icon"></a>
                     <div class="gallery-hover">
-                      <p>{{ item.first_name }} {{ item.profile_number }}<br><strong>{{ item.age }} år</strong></p>
+                      <p>{{ item.field_first_name_export }} {{ item.field_profile_number_export }}<br><strong>{{ item['age'] }} år</strong></p>
                     </div>
                   </div>
                 </li>

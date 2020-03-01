@@ -1,0 +1,62 @@
+    
+    <div class="wrapper-black">
+    
+        <div class="popup-header">
+              <div class="container-lg">
+                  <div class="popup-logo"><a routerLink="/profiles"><img src="assets/images/logo-white.svg" alt=""></a></div>
+                  <a href="javascript:void(0)" class="close-icon" routerLink="/profiles"></a>
+             </div>
+        </div><!--popup-header-->
+        
+        <div class="popup-content">
+             <div class="container-lg">
+                  <div class="cnt">
+                          <div class="step-left">
+                            <h3>Upload materiale</h3>
+                            <p>For at færdiggøre din ansøgning bedes du uploaded minimum tre billeder og klikke på Ansøg.</p>
+                            <p>Billederne skal være af filtyperne <br>.jpg, .jpeg eller .png.</p>
+                       </div>
+                       
+                       <div class="step-right">
+                            
+                            <div class="step-block7">
+                                 <h4>UPLOAD</h4>
+                                 <div class="upload-block">
+                                   <input class="upload-block" type="file" name="usermedia" id="usermedia" (change)="handleFileInput($event.target.files)">
+                                   <h5>Placer billeder <br>og videoer her</h5>
+                                       <h6>Upload min. tre fotos af dig selv<br> Videomateriale er valgfrit</h6>
+                                 </div>
+                                 
+                                 <input type="button" (click)="saveMedia()" class="submit1 pull-right" value="Gem profil">
+                            </div>
+                            
+                            <div class="step-block8">
+                              <div style="float: left; width: 100%;">
+                                   <h4>FOTO</h4>
+                                   <ul>
+                                        <li *ngFor="let item of userprofileService.userProfile[0].field_photos_export"><a href="javascript:void(0)"><img [src]="item" (error)="refreshPhoto(item)" alt=""/></a></li>
+                                   </ul>
+                              </div>
+                              
+                              <div style="float: left; width: 100%;">
+                                   <h4>VIDEO</h4>
+                                   <ul>
+                                        <li *ngFor="let item of userprofileService.userProfile[0].field_video_thumbnails_export"><a href="javascript:void(0)"><img [lazyLoad]="item" [errorImage]="loaderImage" (error)="refreshVideoThumb(this)" alt=""/></a></li>
+                                   </ul>
+                              </div>
+                         </div>
+                            
+                            
+                       </div>
+                       
+                  </div>
+                  
+                  <div class="step-bottom">
+                       <div class="bottom-left">
+                            <h2><span>07</span>/07</h2>
+                       </div>
+                  </div>
+             </div>
+        </div><!--popup-content-->
+        
+   </div><!--popup1-->

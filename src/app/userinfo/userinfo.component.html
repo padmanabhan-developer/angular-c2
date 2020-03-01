@@ -1,0 +1,104 @@
+
+    <div class="wrapper-black">
+    
+        <div class="popup-header">
+              <div class="container-lg">
+                  <div class="popup-logo"><a routerLink="/profiles"><img src="assets/images/logo-white.svg" alt=""></a></div>
+                  <a href="javascript:void(0)" class="download-btn"><span class="download-icon"></span>DOWNLOAD</a>
+                  <a href="javascript:void(0)" class="add-btn"><span class="add-icon"></span>ADD TO LIGHTBOX</a>
+                  <a routerLink="/profiles" class="close-icon"></a>
+             </div>
+        </div><!--popup-header-->
+        
+        <div class="popup-content">
+             <div class="container-lg">
+                 <div class="popup-left">
+                      <div class="popup-side-block">
+                           <h4>Billeder</h4>
+                           <h3>{{ profileData.field_photos_export.length }}</h3>
+                      </div>
+                      <div class="popup-side-block">
+                           <h4>Videoer</h4>
+                           <h3>{{ profileData.field_videos_export.length }}</h3>
+                      </div>
+                 </div>
+                 
+                 <div class="popup-right">
+                        <div class="popup-right-block1">
+                              <ul class="list4" *ngIf="profileData.field_photos_export.length"> 
+                               <li *ngFor="let photo of profileData.field_photos_export; index as i"><a href="javascript:void(0)"><img (click)="loadAsset(i, 'image')" [lazyLoad]="photo" [defaultImage]="defaultImage" [errorImage]="profileFallback" alt=""/></a></li>
+                               
+                           </ul>
+                           <ul class="list2" *ngIf="profileData.field_videos_export.length"> 
+                               <li *ngFor="let thumb of profileData.field_video_thumbnails_export; index as i"><a href="javascript:void(0)"><img (click)="loadAsset(i, 'video')" [lazyLoad]="thumb" [defaultImage]="defaultImage" [errorImage]="profileFallback" alt=""/></a></li>
+                           </ul>
+                      </div>
+                      
+                      <div class="popup-right-block2">
+                            <div class="big-thumb">
+                            <img *ngIf="!showImage && !showVideo" src="assets/images/thumb4.png">
+                            <img *ngIf="showImage" [src]="loadedAssetUrl" alt=""/>
+                            <video controls *ngIf="showVideo" [src]="loadedAssetUrl" alt=""></video>
+                            </div>
+                            <div class="popup-gallery-controlls" *ngIf="false">
+                                <a href="javascript:void(0)" class="prev1"></a>
+                                <a href="javascript:void(0)" class="next1"></a>
+                           </div>
+                      </div>
+                      
+                      <div class="popup-right-block3">
+                              <h2>{{profileData.field_first_name_export}}. <strong>{{profileData.field_profile_number_export}}</strong></h2>
+                           <h3>MODEL</h3>
+                           <table>
+                               <tbody>
+                                   <tr>
+                                       <td>Alder</td>
+                                       <td>38 år </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Højde</td>
+                                       <td>{{ profileData.field_height_export? profileData.field_height_export+' cm': '-' }}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Vægt</td>
+                                       <td>{{ profileData.field_weight_export? profileData.field_weight_export+' kg': '-' }}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Øjenfarve</td>
+                                       <td>{{ profileData.field_eye_color ? profileData.field_eye_color : '-'}}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Hårfarve</td>
+                                       <td>{{ profileData.field_hair_color ? profileData.field_hair_color : '-'}}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Bluse</td>
+                                       <td>{{profileData.field_shirt_size_from_export || ''}} - {{profileData.field_shirt_size_to_export || ''}}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Bukser</td>
+                                       <td>{{profileData.field_pant_size_from_export || ''}} - {{profileData.field_pant_size_to_export || ''}}</td>
+                                   </tr>
+                                   <tr>
+                                       <td>Sko</td>
+                                       <td>{{profileData.field_shoe_size_from_export || ''}} - {{profileData.field_shoe_size_to_export || ''}}</td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                           <h4>SPORT & HOBBY</h4>
+                           <p>{{profileData.field_sports_and_hobby_export || '-'}}</p>
+                           
+                           <h4>ERFARING</h4>
+                           <p>{{profileData.field_skills || ''}}</p>
+                           
+                           <h4>SPROG</h4>
+                           <p>-</p>
+                           
+                           <h4>KØREKORT</h4>
+                           <p>{{profileData.field_licenses || ''}}</p>
+                      </div>
+                 </div>
+             </div>
+        </div><!--popup-content-->
+        
+   </div><!--popup1-->
