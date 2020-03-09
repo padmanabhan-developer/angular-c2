@@ -15,6 +15,31 @@ export class LoginPage3Component implements OnInit {
   listofHairColors: string[];
   listofEyeColors: string[];
   showChildrenSizes = false;
+
+  maleShirtMin = 35;
+  maleShirtMax = 46;
+  femaleShirtMin = 32;
+  femaleShirtMax = 58;
+  childShirtMin = 86;
+  childShirtMax = 170;
+
+  malePantMin = 26;
+  malePantMax = 42;
+  femalePantMin = 32;
+  femalePantMax = 58;
+  childPantMin = 86;
+  childPantMax = 170;
+
+  maleShoeMin = 34;
+  maleShoeMax = 55;
+  femaleShoeMin = 34;
+  femaleShoeMax = 48;
+  childShoeMin = 17;
+  childShoeMax = 42;
+  PantSizes: any;
+  ShirtSizes: any;
+  ShoeSizes: any;
+
   constructor(
     public userprofileService: UserprofileService,
     private appData: AppDataService
@@ -49,7 +74,43 @@ export class LoginPage3Component implements OnInit {
   }
   childrenSizes() {
     console.log(this.showChildrenSizes);
+    this.toggleOptions();
     return this.showChildrenSizes;
   }
+  toggleOptions() {
+    if (this.showChildrenSizes) {
+      this.PantSizes = this.listofPantSizes.filter((item) => {
+        return item >= this.childPantMin && item <= this.childPantMax;
+      });
+      this.ShirtSizes = this.listofShirtSizes.filter((item) => {
+        return item >= this.childShirtMin && item <= this.childShirtMax;
+      });
+      this.ShoeSizes = this.listofShoeSizes.filter((item) => {
+        return item >= this.childShoeMin && item <= this.childShoeMax;
+      });
+    } else {
+      if (this.userprofileService.userProfile[0].field_gender_export == '1') {
+        this.PantSizes = this.listofPantSizes.filter((item) => {
+          return item >= this.malePantMin && item <= this.malePantMax;
+        });
+        this.ShirtSizes = this.listofShirtSizes.filter((item) => {
+          return item >= this.maleShirtMin && item <= this.maleShirtMax;
+        });
+        this.ShoeSizes = this.listofShoeSizes.filter((item) => {
+          return item >= this.maleShoeMin && item <= this.maleShoeMax;
+        });
+      } else {
+        this.PantSizes = this.listofPantSizes.filter((item) => {
+          return item >= this.femalePantMin && item <= this.femalePantMax;
+        });
+        this.ShirtSizes = this.listofShirtSizes.filter((item) => {
+          return item >= this.femaleShirtMin && item <= this.femaleShirtMax;
+        });
+        this.ShoeSizes = this.listofShoeSizes.filter((item) => {
+          return item >= this.femaleShoeMin && item <= this.femaleShoeMax;
+        });
+      }
+    }
+  }  
 
 }

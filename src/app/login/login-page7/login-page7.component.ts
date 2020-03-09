@@ -2,6 +2,8 @@ import { UserprofileService } from 'src/app/services/userprofile.service';
 import { Component, OnInit } from '@angular/core';
 import { AppDataService } from 'src/app/services/app-data.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @Component({
   selector: 'login-page-7',
   templateUrl: './login-page7.component.html',
@@ -11,7 +13,7 @@ export class LoginPage7Component implements OnInit {
   fileToUpload: File = null;
   timeinstant: number;
   loaderImage = '/assets/images/loader/PolygonLoader.svg';
-
+  loadSpinner = false;
   constructor(
     private appService: AppDataService,
     public userprofileService: UserprofileService,
@@ -21,6 +23,7 @@ export class LoginPage7Component implements OnInit {
   }
 
   handleFileInput(files: FileList) {
+    this.loadSpinner = true;
     this.fileToUpload = files.item(0);
     this.timeinstant = Date.now();
     const filename = this.timeinstant + '__' + this.fileToUpload.name.replace(/[^a-zA-Z0-9]/g, '');
@@ -35,6 +38,7 @@ export class LoginPage7Component implements OnInit {
   }
   uploadFileToActivity(filename) {
     this.appService.postFile(this.fileToUpload, filename).subscribe(res => {
+      this.loadSpinner = false;
       if (this.fileToUpload.type.includes('video')) {
         this.appService.initiateZencoder(filename).subscribe(res => {
           const linkToUploadedVideoFile = this.appService.castitFilesCDN + filename + '.mp4';
@@ -55,20 +59,18 @@ export class LoginPage7Component implements OnInit {
       });
   }
 
-  saveMedia(){
+  saveMedia() {
     this.userprofileService.saveProfile().subscribe((res) => {
       const respose: any = res;
       if (respose && respose.message && respose.message === 'update success') {
-        this.router.navigate(['/']);
+        this.router.navigate(['/profiles']);
       }
     });
   }
 
   refreshVideoThumb(src){
     console.log('err', src);
-
     alert('Refreshing Video Thumbnails; Please wait');
-
     setTimeout(() => {
       window.location.reload();
     }, 5000);

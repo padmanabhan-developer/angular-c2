@@ -11,39 +11,45 @@
         <div class="popup-content">
              <div class="container-lg">
                   <div class="cnt">
-                          <div class="step-left">
-                            <h3 *ngIf="!userprofileService.isLoggedIn()">Ansøgningsskema</h3>
-                            <h3 *ngIf="userprofileService.isLoggedIn()">{{ userprofileService.userProfile[0].field_first_name_export }} {{userprofileService.userProfile[0].field_last_name_export}} - {{userprofileService.userProfile[0].field_profile_number_export}}</h3>
-                            <p>For at ansøge om en profil, bedes du udfylde felterne og klikke videre til næste side.</p>
-                       </div>
-                       
-                       <div class="step-right">
-                            
+                    <div class="step-left">
+                         <h3 *ngIf="!userprofileService.isLoggedIn()">{{ 'profileUpdate.applicationForm' | translate }}
+                         </h3>
+                         <h3 *ngIf="userprofileService.isLoggedIn()">
+                              {{ userprofileService.userProfile[0].field_first_name_export }}
+                              {{userprofileService.userProfile[0].field_last_name_export}} -
+                              {{userprofileService.userProfile[0].field_profile_number_export}}</h3>
+                         <p *ngIf="!userprofileService.isLoggedIn()">{{ 'profileUpdate.applicationNote' | translate }}
+                         </p>
+                         <p *ngIf="userprofileService.isLoggedIn()">{{ 'profileUpdate.updateNote' | translate }}</p>
+                    </div>
+
+                    <div class="step-right">
                             <div class="step-block1 w-315">
                                  
                                  <div class="step-block3">
                                       <h4>SPROG</h4>
                                         <div class="form-row">
                                              <select class="custom-select" [(ngModel)]="userprofileService.userProfile[0].field_language_one_export">
-                                                 <option>Modersmål</option>
+                                                 <option disabled selected value="">{{ 'profileUpdate.mothertongue' | translate }}</option>
                                                  <option *ngFor="let language of listOfLanguageNames; let i = index" [selected]="listOfLanguageIDs[i] == userprofileService.userProfile[0].field_language_one_export" [(ngValue)]="listOfLanguageIDs[i]">{{ language }}</option>
                                              </select>
+                                             <span *ngIf="emptyLanguage" class="alert">{{ 'profileUpdate.mandatoryField' | translate }}</span>
                                       </div>
                                       <div class="form-row">
                                              <select class="custom-select" [(ngModel)]="userprofileService.userProfile[0].field_language_two_export">
-                                                 <option>Sprog</option>
+                                                 <option disabled selected value="">{{ 'profileUpdate.language' | translate }}</option>
                                                  <option *ngFor="let language of listOfLanguageNames; let i = index" [selected]="listOfLanguageIDs[i] == userprofileService.userProfile[0].field_language_two_export" [(ngValue)]="listOfLanguageIDs[i]">{{ language }}</option>
                                              </select>
                                       </div>
                                       <div class="form-row">
                                                <select class="custom-select" [(ngModel)]="userprofileService.userProfile[0].field_language_three_export">
-                                                 <option>Sprog</option>
+                                                 <option disabled selected value="">{{ 'profileUpdate.language' | translate }}</option>
                                                  <option *ngFor="let language of listOfLanguageNames; let i = index" [selected]="listOfLanguageIDs[i] == userprofileService.userProfile[0].field_language_three_export" [(ngValue)]="listOfLanguageIDs[i]">{{ language }}</option>
                                               </select>
                                       </div>
                                       <div class="form-row">
                                                <select class="custom-select" [(ngModel)]="userprofileService.userProfile[0].field_language_four_export">
-                                                 <option>Sprog</option>
+                                                 <option disabled selected value="">{{ 'profileUpdate.language' | translate }}</option>
                                                  <option *ngFor="let language of listOfLanguageNames; let i = index" [selected]="listOfLanguageIDs[i] == userprofileService.userProfile[0].field_language_four_export" [(ngValue)]="listOfLanguageIDs[i]">{{ language }}</option>
                                               </select>
                                       </div>
@@ -58,6 +64,7 @@
                                                             <span class="star" [class.filled]="fill === 100">&#9733;</span>
                                                           </ng-template>
                                                   </ngb-rating>
+                                                  <span *ngIf="emptyRating" class="alert">{{ 'profileUpdate.mandatoryField' | translate }}</span>
                                            </div>
                                       </div>
                                       <div class="form-row">
@@ -155,7 +162,7 @@
                        <div class="bottom-left">
                             <h2><span>05</span>/07</h2>
                        </div>
-                          <div class="bottom-right"><a class="prev-btn" routerLink="/login/4">FORRIGE</a><a class="next-btn" routerLink="/login/6">NÆSTE</a></div>
+                          <div class="bottom-right"><a class="prev-btn" routerLink="/login/4">{{ 'profileUpdate.previous' | translate }}</a><a class="next-btn" (click)="validate()">{{ 'profileUpdate.next' | translate }}</a></div>
                   </div>
              </div>
         </div><!--popup-content-->

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 import { AppDataService } from 'src/app/services/app-data.service';
@@ -12,9 +13,12 @@ export class LoginPage5Component implements OnInit {
   listOfLanguageIDs: string[];
   listOfLanguageNames: unknown[];
   currentRate = 3;
+  emptyLanguage = false;
+  emptyRating = false;
   constructor(
     public userprofileService: UserprofileService,
-    private appData: AppDataService
+    private appData: AppDataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,6 +29,24 @@ export class LoginPage5Component implements OnInit {
       this.listOfLanguageIDs = Object.keys(this.listOfLanguages);
       this.listOfLanguageNames = Object.values(this.listOfLanguages);
     });
+  }
+
+  validate() {
+    if (!this.userprofileService.userProfile[0].field_language_one_export) {
+      this.emptyLanguage = true;
+    } else {
+      this.emptyLanguage = false;
+    }
+
+    if (!this.userprofileService.userProfile[0].field_language_one_rating_export) {
+      this.emptyRating = true;
+    } else {
+      this.emptyRating = false;
+    }
+
+    if(!this.emptyRating && !this.emptyLanguage) {
+      this.router.navigate(['/login/6']);
+    }
   }
 
 }

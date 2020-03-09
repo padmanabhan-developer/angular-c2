@@ -60,3 +60,7 @@
         </div><!--popup-content-->
         
    </div><!--popup1-->
+<!-- <ngx-spinner *ngIf="true" bdOpacity = 0.9bdColor = "#333"size = "medium"color = "#fff"type = "line-scale"[fullScreen] = "true">
+<p style="color: white" > Processing... </p>
+</ngx-spinner> -->
+<app-loader *ngIf="loadSpinner"></app-loader>

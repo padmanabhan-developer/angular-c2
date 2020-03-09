@@ -1,5 +1,5 @@
 import { UserprofileService } from 'src/app/services/userprofile.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AppDataService } from '../services/app-data.service';
 
@@ -9,29 +9,68 @@ import { AppDataService } from '../services/app-data.service';
   styleUrls: ['./hompage.component.css']
 })
 export class HompageComponent implements OnInit {
-  data = {};
+  data: any = [];
   defaultImage = '/assets/images/loader/PolygonLoader.svg';
   profileFallback = '/assets/images/profile/profileFallback.jpg';
-
+  myProfileLink = '/login/1';
   searchGender: any = 'all';
   searchFN = '';
+  lightboxMode = false;
+  lightboxID = '';
 
   constructor(
-    private appService: AppDataService,
+    public appService: AppDataService,
     public userprofileService: UserprofileService,
-    private router: Router
+    private router: Router,
+    // private currentRoute: ActivatedRouteSnapshot
   ) { }
 
   ngOnInit() {
+    this.setMyprofileLink();
     this.defaultImage = this.appService.defaultImage;
     this.profileFallback = this.appService.profileFallback;
+    // this.lightboxID = this.currentRoute.params.
 
-    this.appService.getProfiles()
-      .subscribe(res => {
+    this.appService.getCProfiles().subscribe(res => {
         this.data = res;
         // this.data = this.shuffle(this.data);
         this.appService.loadedProfileData = this.data;
+
+        this.appService.getYProfiles().subscribe(resp => {
+        let yData = resp;
+        // yData = this.shuffle(yData);
+        this.appService.loadedProfileData = this.appService.loadedProfileData.concat(yData);
+        this.data = this.appService.loadedProfileData;
       });
+    });
+  }
+
+  getThumb(item) {
+    console.log('item',item);
+    if (item.field_photo_thumbnails_export && item.field_photo_thumbnails_export[0]) {
+      return item.field_photo_thumbnails_export[0];
+    } else if (item.field_photos_export && item.field_photo_export[0]) {
+      return item.field_photo_export[0];
+    } else {
+      return this.profileFallback;
+    }
+  }
+
+  toggleMobileMenu() {
+    
+  }
+
+  setMyprofileLink() {
+    if (
+      this.userprofileService &&
+      this.userprofileService.userProfile &&
+      this.userprofileService.userProfile[0] &&
+      this.userprofileService.userProfile[0].roles_target_id &&
+      this.userprofileService.userProfile[0].roles_target_id.toLowerCase() === 'customer') {
+        this.myProfileLink = '/customer-profile';
+        console.log('here');
+      }
+    console.log(this.myProfileLink);
   }
 
   shuffle(arra1) {
@@ -84,5 +123,16 @@ export class HompageComponent implements OnInit {
         this.data = res;
         this.appService.loadedProfileData = this.data;
       });
+  }
+
+  addModelToLightbox(model) {
+    if (! this.userprofileService.checkIfCustomer()) {
+      this.router.navigate(['/customer-login']);
+    } else {
+      this.appService.addToLightboxImage = model.field_photo_thumbnails_export[0] ? model.field_photo_thumbnails_export[0] : '';
+      this.userprofileService.showAddToLightboxComponent = true;
+      this.userprofileService.modelToBeAddedToLightbox = model;
+    }
+
   }
 }

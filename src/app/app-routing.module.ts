@@ -1,3 +1,5 @@
+import { LightboxPageComponent } from './lightbox-page/lightbox-page.component';
+import { CustomerComponent } from './customer/customer/customer.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { AboutComponent } from './about/about.component';
 import { WorkshopComponent } from './workshop/workshop.component';
@@ -13,6 +15,10 @@ import { LoginPage5Component } from './login/login-page5/login-page5.component';
 import { LoginPage6Component } from './login/login-page6/login-page6.component';
 import { LoginPage7Component } from './login/login-page7/login-page7.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CustomerprofileComponent } from './customerprofile/customerprofile.component';
+import { CustomerloginComponent } from './customerlogin/customerlogin.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { NewpasswordComponent } from './newpassword/newpassword.component';
 
 
 const routes: Routes = [
@@ -29,6 +35,11 @@ const routes: Routes = [
   {
     path: 'profiles',
     component: HompageComponent
+
+  },
+  {
+    path: 'lightbox-info/:lbid',
+    component: LightboxPageComponent
 
   },
   {
@@ -50,6 +61,26 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent
 
+  },
+  {
+    path: 'reset-password',
+    component: ResetpasswordComponent
+  },
+  {
+    path: 'new-password',
+    component: NewpasswordComponent
+  },
+  {
+    path: 'customer-create',
+    component: CustomerComponent
+  },
+  {
+    path: 'customer-profile',
+    component: CustomerprofileComponent
+  },
+  {
+    path: 'customer-login',
+    component: CustomerloginComponent
   },
   {
     path: 'login',

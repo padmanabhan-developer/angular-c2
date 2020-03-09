@@ -1,3 +1,4 @@
+import { AppDataService } from './app-data.service';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -6,6 +7,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserprofileService {
+  basicAuthForAPI = 'Basic YXBpdXNlcjphcGkuY2FzdGl0LmRrQG1haWxpbmF0b3IuY29t';
+  showSendLightboxForm = false;
+  shareLightboxComment = '';
+  shareLightboxTO = '';
+  shareLightboxCC = '';
+  shareLightboxSelfName = '';
+  shareLightboxSelfEmail = '';
+  showAddToLightboxComponent = false;
+  commentForModelInLightbox = '';
   userProfileEmpty = [{
     field_profile_number_export: '',
     field_photos_export: [],
@@ -84,15 +94,80 @@ export class UserprofileService {
     field_licenses: '',
     field_eye_color_export: '',
     field_height_export: '',
-    field_weight_export: ''
+    field_weight_export: '',
+    field_organization_export: '',
+    password: ''
   }];
   userProfile = localStorage.getItem('currentUserProfile') ? JSON.parse(localStorage.getItem('currentUserProfile')) : this.userProfileEmpty;
+  newLightboxName: any;
+  lightboxesOfCurrentUser = [];
+  modelToBeAddedToLightbox: any;
+  urlLang = (this.appService.langcode === 'DA') ? '/da' : '/en';
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private appService: AppDataService
   ) { }
   registerUser(profileInfoJson = {}) {
-    const registerEndpoint = environment.backendBaseUrl + '/user/register?_format=json';
+    const registerEndpoint = environment.backendBaseUrl + this.urlLang + '/user/register?_format=json';
     return this.http.post(registerEndpoint, profileInfoJson);
+  }
+  checkEmail(email) {
+    const emailCheckUrl = environment.backendBaseUrl + this.urlLang + '/api/email/check';
+    return this.http.post(emailCheckUrl, {email});
+  }
+  shareLightboxEmail(groupInfo) {
+    const shareLightboxUrl = environment.backendBaseUrl + this.urlLang + '/api/share-lightbox';
+    return this.http.post(shareLightboxUrl, groupInfo);
+  }
+
+  loadProfilesOfLightbox(gid) {
+    const profilesOfLightboxUrl = environment.backendBaseUrl + this.urlLang + '/lightbox/' + gid + '/members';
+    return this.http.get(profilesOfLightboxUrl);
+  }
+
+  updatePassword(email, pass) {
+    const updatePasswordUrl = environment.backendBaseUrl + this.urlLang + '/api/update-password';
+    const data = {email, pass};
+    return this.http.post(updatePasswordUrl, data);
+  }
+  addToLightbox(selectedGroups, member = '', groupNotes = '') {
+    const model = (member) ? member : this.modelToBeAddedToLightbox;
+    const comment = (!groupNotes) ? this.commentForModelInLightbox : groupNotes;
+    const addToLightboxUrl = environment.backendBaseUrl + this.urlLang + '/api/lightbox/addmember';
+    const data = {
+      user: model,
+      gids: selectedGroups,
+      comment
+    };
+    this.http.post(addToLightboxUrl, data).subscribe(res => {
+      this.showAddToLightboxComponent = false;
+    });
+  }
+
+  removeFromLightbox(model, gid) {
+    const removeFromLightboxUrl = environment.backendBaseUrl + this.urlLang + '/api/lightbox/removemember';
+    const data = {
+      user: model,
+      gids: gid
+    };
+    return this.http.post(removeFromLightboxUrl, data);
+  }
+  resetPassword(user) {
+    const resetPasswordUrl = environment.backendBaseUrl + this.urlLang + '/api/reset-password';
+    return this.http.post(resetPasswordUrl, user);
+  }
+
+  checkIfCustomer() {
+    if (
+        this.userProfile &&
+        this.userProfile[0] &&
+        this.userProfile[0].roles_target_id &&
+        this.userProfile[0].roles_target_id.toLowerCase() === 'customer'
+      ) {
+        return true;
+      } else {
+        return false;
+      }
   }
 
   login(userJson) {
@@ -100,7 +175,7 @@ export class UserprofileService {
     const options = {
       headers
     };
-    const loginEndPoint = environment.backendBaseUrl + '/user/login?_format=json';
+    const loginEndPoint = environment.backendBaseUrl + this.urlLang + '/user/login?_format=json';
     return this.http.post(loginEndPoint, userJson, options);
   }
 
@@ -110,20 +185,65 @@ export class UserprofileService {
     localStorage.removeItem('userLoginResponse');
   }
 
-  loadProfile(uid) {
-    const userProfileEndPoint = environment.backendBaseUrl + '/model/' + uid;
+  loadGroupsOfCustomer() {
+    const uid = this.userProfile[0].uid_export;
+    const groupsUrl = environment.backendBaseUrl + this.urlLang + '/lightboxes/' + uid;
+    return this.http.get(groupsUrl);
+  }
+
+  loadProfile(uid, role = 'model') {
+    let userProfileEndPoint = '';
+    switch (role) {
+      case '':
+      case 'model':
+      default:
+        userProfileEndPoint = environment.backendBaseUrl + this.urlLang + '/model/' + uid;
+        break;
+      case 'customer':
+        userProfileEndPoint = environment.backendBaseUrl + this.urlLang + '/customer/' + uid;
+        break;
+    }
+
     return this.http.get(userProfileEndPoint);
   }
 
-  saveProfile() {
+  addLightbox() {
+    const addLightboxUrl = environment.backendBaseUrl + this.urlLang + '/api/create-lightbox';
+    const headers = new HttpHeaders({
+      'Content-type': 'application/json',
+    });
+    const options = {
+      headers
+    };
+    const lightboxData = {
+      name: this.newLightboxName,
+      uid: this.userProfile[0].uid_export
+    };
+    return this.http.post(addLightboxUrl, lightboxData, options);
+  }
+  removeLightbox(gid) {
+    const deleteLightboxUrl = environment.backendBaseUrl + this.urlLang + '/group/' + gid;
+    const headers = new HttpHeaders({
+      'Content-type': 'application/json',
+      Authorization: this.basicAuthForAPI
+    });
+    const options = {
+      headers
+    };
+    return this.http.delete(deleteLightboxUrl, options);
+  }
+
+  saveProfile(role = 'model') {
     const headers = new HttpHeaders('Content-type:application/json');
     const options = {
       headers
     };
+    this.userProfile[0].roleType = role;
     console.log(this.userProfile[0]);
-    const saveUserEndPoint = environment.backendBaseUrl + '/api/user-update';
+    const saveUserEndPoint = environment.backendBaseUrl + this.urlLang + '/api/user-update';
     return this.http.post(saveUserEndPoint, this.userProfile[0], options);
   }
+
   isLoggedIn() {
     if (this.userProfile[0] && this.userProfile[0].uid_export) {
       return true;

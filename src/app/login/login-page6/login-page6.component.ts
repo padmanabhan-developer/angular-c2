@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { AppDataService } from 'src/app/services/app-data.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login.component';
 
 @Component({
   selector: 'login-page-6',
@@ -9,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page6.component.scss']
 })
 export class LoginPage6Component implements OnInit {
-
   constructor(
     public userprofileService: UserprofileService,
     private appData: AppDataService,
@@ -23,7 +23,10 @@ export class LoginPage6Component implements OnInit {
   saveUser() {
     this.userprofileService.saveProfile().subscribe((res) => {
       const respose: any = res;
-      if (respose && respose.message && respose.message === 'success') {
+      if (respose && respose.message && respose.message === 'create success' ||
+          respose && respose.message && respose.message === 'update success') {
+        this.userprofileService.userProfile[0].uid_export = respose.uid;
+        localStorage.setItem('currentUserProfile', JSON.stringify(this.userprofileService.userProfile));
         this.router.navigate(['/login/7']);
       }
     });

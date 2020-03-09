@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AppDataService } from 'src/app/services/app-data.service';
 import { UserprofileService } from './../../services/userprofile.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,15 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage1Component implements OnInit {
   password = {
-    first: '',
-    confirm: ''
+    first: this.userprofileService.userProfile[0].password,
+    confirm: this.userprofileService.userProfile[0].password
   };
   listOfCountries: any;
   listOfCountryIDs: string[];
   listOfCountryNames: unknown[];
+
+  noFirstName = false;
+  passwordsMismatch = false;
+
   constructor(
     public userprofileService: UserprofileService,
-    private appData: AppDataService
+    private appData: AppDataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,6 +34,25 @@ export class LoginPage1Component implements OnInit {
       this.listOfCountryIDs = Object.keys(this.listOfCountries);
       this.listOfCountryNames = Object.values(this.listOfCountries);
     });
+  }
+
+  validate() {
+    const formModelInfo = this.userprofileService.userProfile[0];
+    if (!formModelInfo.field_first_name_export) {
+      this.noFirstName = true;
+    } else {
+      this.noFirstName = false;
+    }
+    if (!(this.password.first === this.password.confirm)) {
+      this.passwordsMismatch = true;
+    } else {
+      this.passwordsMismatch = false;
+      this.userprofileService.userProfile[0].password = this.password.confirm;
+    }
+
+    if (!this.noFirstName && !this.passwordsMismatch) {
+      this.router.navigate(['/login/2']);
+    }
   }
 
 }

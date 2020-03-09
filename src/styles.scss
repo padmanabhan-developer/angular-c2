@@ -1,3 +1,4 @@
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -25,6 +26,34 @@ $angular-theme: mat-light-theme($angular-primary, $angular-accent, $angular-warn
 // that you are using.
 @include angular-material-theme($angular-theme);
 
+/*
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$angular-primary: mat-palette($mat-indigo);
+$angular-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$angular-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$angular-theme: mat-light-theme($angular-primary, $angular-accent, $angular-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($angular-theme);
+*/
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -192,7 +221,15 @@ body {
 .workshop-section p strong {
   font-weight: 700;
 }
-
+app-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:
+  transparent;
+  right: 0;
+  bottom: 0;
+}
 .workshop-section .col-6 {
   float: left;
   width: 442px !important;
@@ -304,7 +341,9 @@ body {
   width: 36px;
   background: url(assets/images/side-search.svg) no-repeat center center;
 }
-
+.cursor-pointer{
+  cursor: pointer;
+}
 .ul-style1 {
   float: left;
   width: 100%;
@@ -654,7 +693,7 @@ body {
 }
 
 .popup-side-block+.popup-side-block {
-  margin-top: 242px;
+  // margin-top: 242px;
 }
 
 .popup-side-block h4 {
@@ -2798,9 +2837,16 @@ body {
   }
 }
 
-
-
-
+@media(min-width: 768px){
+  .list-photos, .list-videos{
+      height: 380px;
+      overflow-y: scroll;
+      margin-top: 0;
+  }
+  .mobileOptions{
+      display: none;
+  }
+}
 
 @media all and (min-width:768px) and (max-width:1400px) {
   .container-lg {
@@ -3249,7 +3295,7 @@ body {
 
 @media (max-width: 991px) {
   .rightbar_inner ul li {
-    width: 25%;
+    width: 33.3%;
   }
 
   .leftbar {
@@ -3317,10 +3363,27 @@ body {
 }
 
 @media (max-width: 767px) {
+  .mobileOptions{
+    padding: 0 !important;
+  }
+  .searchIcon, lightboxIcon{
+      padding: 0 !important;
+      height: 50px !important;
+      width: 50px !important;
+
+      img{
+          height: 100% !important;
+          width: 100% !important;
+      }
+  }
+  .sidefix{
+    display: none;
+  }
   .leftbar {
     width: 100%;
     background: #000;
     margin-bottom: 20px;
+    display: none;
   }
 
   #content {
@@ -3365,6 +3428,42 @@ body {
     float: right;
   }
 
+
+  .leftbar {
+    top: 0 !important;
+    position: fixed !important;
+    z-index: 999999999;
+    overflow-x: hidden;
+    transition: .5s;
+    background: #000 !important;
+    width: 250px !important;
+    right: -250px;
+    height: 100% !important;
+    border: none !important;
+    display: block !important;
+    padding-top: 30px;
+  }
+  .leftbar.collapse.show{
+    right: 0;
+  }
+  .sidefix {
+    top: 0 !important;
+    position: fixed !important;
+    z-index: 999999999;
+    overflow-x: hidden;
+    transition: .5s;
+    background: #000 !important;
+    width: 250px !important;
+    right: -250px;
+    height: 100% !important;
+    border: none !important;
+    display: block !important;
+    padding-top: 30px;
+  }
+  .sidefix.collapse.show{
+    right: 0;
+  }
+
   .navbar-collapse {
     top: 0 !important;
     position: fixed !important;
@@ -3380,7 +3479,7 @@ body {
     padding-top: 30px;
   }
 
-  .collapse.show {
+  .navbar-collapse.collapse.show {
     left: 0px;
   }
 
@@ -3701,3 +3800,15 @@ img.ng-lazyloaded {
   from { opacity: 0; }
   to { opacity: 1; } 
 }
+.blurred {
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+.send-lightbox{
+  z-index: 1;
+}
+.gallery-controlls{
+  display: none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -11,11 +11,17 @@
         <div class="popup-content">
              <div class="container-lg">
                   <div class="cnt">
-                          <div class="step-left">
-                            <h3 *ngIf="!userprofileService.isLoggedIn()">Ansøgningsskema</h3>
-                            <h3 *ngIf="userprofileService.isLoggedIn()">{{ userprofileService.userProfile[0].field_first_name_export }} {{userprofileService.userProfile[0].field_last_name_export}} - {{userprofileService.userProfile[0].field_profile_number_export}}</h3>
-                            <p>For at ansøge om en profil, bedes du udfylde felterne og klikke videre til næste side.</p>
-                       </div>
+                    <div class="step-left">
+                         <h3 *ngIf="!userprofileService.isLoggedIn()">{{ 'profileUpdate.applicationForm' | translate }}
+                         </h3>
+                         <h3 *ngIf="userprofileService.isLoggedIn()">
+                              {{ userprofileService.userProfile[0].field_first_name_export }}
+                              {{userprofileService.userProfile[0].field_last_name_export}} -
+                              {{userprofileService.userProfile[0].field_profile_number_export}}</h3>
+                         <p *ngIf="!userprofileService.isLoggedIn()">{{ 'profileUpdate.applicationNote' | translate }}
+                         </p>
+                         <p *ngIf="userprofileService.isLoggedIn()">{{ 'profileUpdate.updateNote' | translate }}</p>
+                    </div>
                        
                        <div class="step-right">
                             <div class="step-block9">
@@ -53,7 +59,7 @@
                        <div class="bottom-left">
                             <h2><span>04</span>/07</h2>
                        </div>
-                          <div class="bottom-right"><a class="prev-btn" routerLink="/login/3">FORRIGE</a><a class="next-btn" routerLink="/login/5">NÆSTE</a></div>
+                          <div class="bottom-right"><a class="prev-btn" routerLink="/login/3">{{ 'profileUpdate.previous' | translate }}</a><a class="next-btn" routerLink="/login/5">{{ 'profileUpdate.next' | translate }}</a></div>
                   </div>
              </div>
         </div><!--popup-content-->

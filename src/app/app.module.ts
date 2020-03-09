@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { CookieService } from 'ngx-cookie-service';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -30,6 +32,21 @@ import { LoginPage7Component } from './login/login-page7/login-page7.component';
 import { WorkshopComponent } from './workshop/workshop.component';
 import { UserprofileService } from './services/userprofile.service';
 import { LogoutComponent } from './logout/logout.component';
+import { CustomerComponent } from './customer/customer/customer.component';
+import { CustomerprofileComponent } from './customerprofile/customerprofile.component';
+import { LightboxComponent } from './lightbox/lightbox.component';
+import { LightboxsidebarComponent } from './lightboxsidebar/lightboxsidebar.component';
+import { CustomerloginComponent } from './customerlogin/customerlogin.component';
+import { AddtolightboxComponent } from './addtolightbox/addtolightbox.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { NewpasswordComponent } from './newpassword/newpassword.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoaderComponent } from './loader/loader.component';
+import { LightboxPageComponent } from './lightbox-page/lightbox-page.component';
+// import { AdminListComponent } from './admin-list/admin-list.component';
+// import { MatTableModule } from '@angular/material/table';
+// import { MatPaginatorModule } from '@angular/material/paginator';
+// import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   imports: [
     BrowserModule,
@@ -38,7 +55,17 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     LazyLoadImageModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    // MatTableModule,
+    // MatPaginatorModule,
+    // MatSortModule
   ],
   declarations: [
     AppComponent,
@@ -61,7 +88,19 @@ import { LogoutComponent } from './logout/logout.component';
     LoginPage6Component,
     LoginPage7Component,
     WorkshopComponent,
-    LogoutComponent
+    LogoutComponent,
+    CustomerComponent,
+    CustomerprofileComponent,
+    LightboxComponent,
+    LightboxsidebarComponent,
+    CustomerloginComponent,
+    AddtolightboxComponent,
+    ResetpasswordComponent,
+    NewpasswordComponent,
+    LoaderComponent,
+    LightboxPageComponent,
+    // AdminComponent,
+    // AdminListComponent
   ],
   bootstrap: [
     AppComponent
@@ -73,3 +112,9 @@ import { LogoutComponent } from './logout/logout.component';
   ]
 })
 export class AppModule { }
+
+// required for AOT compilation
+// Docs : https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-angular8-app-with-ngx-translate
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
