@@ -9,7 +9,9 @@ import {TranslateService} from '@ngx-translate/core';
 export class AppDataService {
   backendBasePath = environment.backendBaseUrl;
   dataSet = {};
-  profileInfoUrl = this.backendBasePath + '/model/';
+  langcode = '';
+  urlLang = (this.langcode === 'DA') ? '/da' : '/en';
+  profileInfoUrl = this.backendBasePath + this.urlLang + '/model/';
   allProfilesUrl = this.backendBasePath + '/models';
   allCProfilesUrl = this.backendBasePath + '/cmodels';
   allYProfilesUrl = this.backendBasePath + '/ymodels';
@@ -25,7 +27,6 @@ export class AppDataService {
   cloudFilesTempUrl: any;
   profileOpened = false;
   sidebarOpened = false;
-  langcode = '';
   apiUserDA = 'Basic YXBpdXNlcjphcGkuY2FzdGl0LmRrQG1haWxpbmF0b3IuY29t';
   apiUserEN = 'Basic ZW4uYXBpdXNlcjphcGkuY2FzdGl0LmRrQG1haWxpbmF0b3IuY29t';
   addToLightboxImage = '';
@@ -62,7 +63,7 @@ export class AppDataService {
   }
 
   getLightboxProfiles(gid) {
-    this.http.get();
+    // this.http.get();
   }
   setLanguage(langcode) {
     this.translate.setDefaultLang(langcode);
@@ -128,6 +129,7 @@ export class AppDataService {
     };
     const langURL = '/' + lang.toLowerCase();
     const url = this.backendBasePath + langURL + '/entity/field_storage_config/user.' + field;
+    console.log(url);
     return this.http.get(url, options);
   }
 }

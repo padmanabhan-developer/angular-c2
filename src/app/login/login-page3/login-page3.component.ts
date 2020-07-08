@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppDataService } from 'src/app/services/app-data.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
@@ -8,6 +8,7 @@ import { UserprofileService } from 'src/app/services/userprofile.service';
   styleUrls: ['./login-page3.component.scss']
 })
 export class LoginPage3Component implements OnInit {
+  @Input() showHeader = true;
   listofShirtSizes: any;
   listofPantSizes: any;
   listofSuitSizes: any;
@@ -50,26 +51,32 @@ export class LoginPage3Component implements OnInit {
     this.appData.getFieldAvailableOptions('field_shirt_size_from').subscribe(res => {
       const respose: any = res;
       this.listofShirtSizes = Object.keys(respose.settings.allowed_values);
+      this.toggleOptions();
     });
     this.appData.getFieldAvailableOptions('field_pant_size_from').subscribe(res => {
       const respose: any = res;
       this.listofPantSizes = Object.keys(respose.settings.allowed_values);
+      this.toggleOptions();
     });
     this.appData.getFieldAvailableOptions('field_suit_size_from').subscribe(res => {
       const respose: any = res;
       this.listofSuitSizes = Object.keys(respose.settings.allowed_values);
+      this.toggleOptions();
     });
     this.appData.getFieldAvailableOptions('field_shoe_size_from').subscribe(res => {
       const respose: any = res;
       this.listofShoeSizes = Object.keys(respose.settings.allowed_values);
+      this.toggleOptions();
     });
     this.appData.getFieldAvailableOptions('field_hair_color').subscribe(res => {
       const respose: any = res;
       this.listofHairColors = Object.values(respose.settings.allowed_values);
+      this.toggleOptions();
     });
     this.appData.getFieldAvailableOptions('field_eye_color').subscribe(res => {
       const respose: any = res;
       this.listofEyeColors = Object.values(respose.settings.allowed_values);
+      this.toggleOptions();
     });
   }
   childrenSizes() {
@@ -111,6 +118,5 @@ export class LoginPage3Component implements OnInit {
         });
       }
     }
-  }  
-
+  }
 }

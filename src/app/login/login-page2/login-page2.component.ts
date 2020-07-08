@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { UserprofileService } from 'src/app/services/userprofile.service';
   styleUrls: ['./login-page2.component.scss']
 })
 export class LoginPage2Component implements OnInit {
+  @Input() showHeader = true;
   inValidEmail = false;
   emailExists = false;
   day: any;

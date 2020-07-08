@@ -120,6 +120,12 @@ export class UserprofileService {
     return this.http.post(shareLightboxUrl, groupInfo);
   }
 
+  setUserStatus(uid, status) {
+    const setStatusEndpoint = environment.backendBaseUrl + '/en/api/set-status';
+    const data = {uid, status};
+    return this.http.post(setStatusEndpoint, data);
+  }
+
   loadProfilesOfLightbox(gid) {
     const profilesOfLightboxUrl = environment.backendBaseUrl + this.urlLang + '/lightbox/' + gid + '/members';
     return this.http.get(profilesOfLightboxUrl);
@@ -250,5 +256,10 @@ export class UserprofileService {
     } else {
       return false;
     }
+  }
+
+  adminList(status) {
+    const listingUrl = environment.backendBaseUrl + '/en/castit-admin/models-list/' + status;
+    return this.http.get(listingUrl);
   }
 }

@@ -1,5 +1,5 @@
 import { UserprofileService } from 'src/app/services/userprofile.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppDataService } from 'src/app/services/app-data.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -10,6 +10,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   styleUrls: ['./login-page7.component.scss']
 })
 export class LoginPage7Component implements OnInit {
+  @Input() showHeader = true;
   fileToUpload: File = null;
   timeinstant: number;
   loaderImage = '/assets/images/loader/PolygonLoader.svg';

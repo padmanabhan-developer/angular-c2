@@ -1,3 +1,4 @@
+import { AdminListComponent } from './admin-list/admin-list.component';
 import { LightboxPageComponent } from './lightbox-page/lightbox-page.component';
 import { CustomerComponent } from './customer/customer/customer.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+
+  },
+  {
+    path: 'admin',
+    component: AdminListComponent
 
   },
   {

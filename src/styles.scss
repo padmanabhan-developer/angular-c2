@@ -2159,7 +2159,7 @@ app-loader {
   }
 
   .navbar-nav li {
-    margin-left: 4vw;
+    margin-left: 3vw;
     font-size: 1vw;
     line-height: 1.2vw;
   }
@@ -2912,7 +2912,7 @@ app-loader {
   }
 
   .navbar-nav li {
-    margin-left: 4vw;
+    margin-left: 3vw;
     font-size: 1vw;
     line-height: 1.2vw;
   }
@@ -3812,3 +3812,13 @@ img.ng-lazyloaded {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+/*
+Admin styles
+*/
+
+@import '@swimlane/ngx-datatable/index.css';
+@import '@swimlane/ngx-datatable/themes/material.scss';
+@import '@swimlane/ngx-datatable/assets/icons.css';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 import { AppDataService } from 'src/app/services/app-data.service';
 
@@ -8,6 +8,7 @@ import { AppDataService } from 'src/app/services/app-data.service';
   styleUrls: ['./login-page4.component.scss']
 })
 export class LoginPage4Component implements OnInit {
+  @Input() showHeader = true;
   listOfSkills: any;
   listOfSkillIDs: any;
   listOfSkillNames: any;

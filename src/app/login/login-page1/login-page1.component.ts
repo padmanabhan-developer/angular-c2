@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AppDataService } from 'src/app/services/app-data.service';
 import { UserprofileService } from './../../services/userprofile.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'login-page1',
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page1.component.scss']
 })
 export class LoginPage1Component implements OnInit {
+  @Input() showHeader = true;
   password = {
     first: this.userprofileService.userProfile[0].password,
     confirm: this.userprofileService.userProfile[0].password

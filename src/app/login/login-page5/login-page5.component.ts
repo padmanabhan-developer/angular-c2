@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 import { AppDataService } from 'src/app/services/app-data.service';
 
@@ -9,6 +9,7 @@ import { AppDataService } from 'src/app/services/app-data.service';
   styleUrls: ['./login-page5.component.scss']
 })
 export class LoginPage5Component implements OnInit {
+  @Input() showHeader = true;
   listOfLanguages: any;
   listOfLanguageIDs: string[];
   listOfLanguageNames: unknown[];

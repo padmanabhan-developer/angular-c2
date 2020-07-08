@@ -40,13 +40,13 @@ import { CustomerloginComponent } from './customerlogin/customerlogin.component'
 import { AddtolightboxComponent } from './addtolightbox/addtolightbox.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { NewpasswordComponent } from './newpassword/newpassword.component';
-import { AdminComponent } from './admin/admin.component';
 import { LoaderComponent } from './loader/loader.component';
 import { LightboxPageComponent } from './lightbox-page/lightbox-page.component';
-// import { AdminListComponent } from './admin-list/admin-list.component';
-// import { MatTableModule } from '@angular/material/table';
-// import { MatPaginatorModule } from '@angular/material/paginator';
-// import { MatSortModule } from '@angular/material/sort';
+import { AdminListComponent } from './admin-list/admin-list.component';
+// import { NgxDatatableModule } from '@swimlane/ngx-datatable/lib/ngx-datatable.module';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AdminUserInfoComponent } from './admin-user-info/admin-user-info.component';
+import { AdminUserMediaComponent } from './admin-user-media/admin-user-media.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -56,6 +56,13 @@ import { LightboxPageComponent } from './lightbox-page/lightbox-page.component';
     AppRoutingModule,
     LazyLoadImageModule,
     HttpClientModule,
+    NgxDatatableModule.forRoot({
+      messages: {
+        emptyMessage: 'Trying to fetch data ... ', // Message to show when array is presented, but contains no values
+        totalMessage: 'total', // Footer total message
+        selectedMessage: 'selected' // Footer selected message
+      }
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -100,7 +107,9 @@ import { LightboxPageComponent } from './lightbox-page/lightbox-page.component';
     LoaderComponent,
     LightboxPageComponent,
     // AdminComponent,
-    // AdminListComponent
+    AdminListComponent,
+    AdminUserInfoComponent,
+    AdminUserMediaComponent
   ],
   bootstrap: [
     AppComponent
